@@ -9,7 +9,10 @@ import {
   Image, 
   HStack, 
   Text, 
-  Stack} from '@chakra-ui/react'
+  Box,
+  Flex,
+  Spacer,
+  Heading} from '@chakra-ui/react'
 import React from 'react'
 import { useUser } from '@auth0/nextjs-auth0'
 
@@ -27,17 +30,34 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <header className={styles.header}>
+        <Flex padding="5">
+          <Box p="2">
+            <Heading size="md" color="white">Frosh Funds</Heading>
+          </Box>
+          <Spacer />
+          <Box>
+            <Button colorScheme="blue" mr="4">
+              <a href="/api/auth/login">Login</a>
+            </Button>
+            <Button colorScheme="blue">
+              <a href="/api/auth/logout">Logout</a>
+            </Button>
+          </Box>
+        </Flex>
+      </header>
+
       <main className={styles.main}>
         
         <HStack>
           <Image
-            height="85vh"
+            height="75vh"
             objectFit="contain"
             src="/vert_gears.png"
             alt="gears"
           />
 
-          <VStack spacing={8} height="80vh" width="65vh" justify="center">
+          <VStack spacing={8} height="75vh" width="65vh" justify="center">
             <Text as="b" fontSize="6xl" color="#0070c4" fontFamily="mono">Frosh Funds</Text>
 
             <Text fontSize="xl" fontFamily="mono">Welcome {user?.name}!</Text>
@@ -53,19 +73,9 @@ const Home: NextPage = () => {
               <option value="UofC">University of Calgary</option>
             </Select>
 
-            <Stack direction="row" width="100%" color="white" p={5} top="0" justify="center">
-              <Button colorScheme="blue">
-                <a href="/api/auth/login">Login</a>
-              </Button>
-              
-              <Button colorScheme="blue">
-                <a href="/api/auth/logout">Logout</a>
-              </Button>
-              
-              <Button colorScheme="blue">
-                <Link href="/students">Search</Link>
-              </Button>
-            </Stack>
+            <Button colorScheme="blue">
+              <Link href="/students">Search</Link>
+            </Button>
 
           </VStack>
         </HStack>
