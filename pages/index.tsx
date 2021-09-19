@@ -2,12 +2,22 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/Link'
 import styles from '../styles/Home.module.css'
-import { Select, InputGroup, Input, InputRightElement, Button, VStack, Image, HStack, Text } from '@chakra-ui/react'
+import { 
+  Select, 
+  Button, 
+  VStack, 
+  Image, 
+  HStack, 
+  Text, 
+  Stack} from '@chakra-ui/react'
 import React from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
 
 const Home: NextPage = () => {
-  const [show, setShow] = React.useState(false)
-  const handleClick = () => setShow(!show)
+  const { user, isLoading, error } = useUser()
+
+  if (isLoading) return <div>Loading...</div>
+  if (error) return <div>{error.message}</div>
 
   return (
     <div className={styles.container}>
@@ -27,9 +37,11 @@ const Home: NextPage = () => {
             alt="gears"
           />
 
-          <VStack spacing={8} height="100vh" width="50vh" justify="center">
+          <VStack spacing={8} height="80vh" width="65vh" justify="center">
             <Text as="b" fontSize="6xl" color="#0070c4" fontFamily="mono">Frosh Funds</Text>
 
+            <Text fontSize="xl" fontFamily="mono">Welcome {user?.name}!</Text>
+            
             <Select placeholder="Select School">
               <option value="UofT">University of Toronto</option>
               <option value="UBC">University of British Columbia</option>
@@ -41,25 +53,20 @@ const Home: NextPage = () => {
               <option value="UofC">University of Calgary</option>
             </Select>
 
-            <Input focusBorderColor="blue.500" placeholder="Username" />
+            <Stack direction="row" width="100%" color="white" p={5} top="0" justify="center">
+              <Button colorScheme="blue">
+                <a href="/api/auth/login">Login</a>
+              </Button>
+              
+              <Button colorScheme="blue">
+                <a href="/api/auth/logout">Logout</a>
+              </Button>
+              
+              <Button colorScheme="blue">
+                <Link href="/students">Search</Link>
+              </Button>
+            </Stack>
 
-            <InputGroup size="md">
-              <Input
-                focusBorderColor="blue.500"
-                pr="4.5rem"
-                type={show ? "text" : "password"}
-                placeholder="Enter password"
-              />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? "Hide" : "Show"}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-
-            <Button colorScheme="blue">
-              <Link href="/students">Submit</Link>
-            </Button>
           </VStack>
         </HStack>
       </main>
