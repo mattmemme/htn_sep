@@ -1,6 +1,6 @@
 import { Grid, SimpleGrid, Flex } from '@chakra-ui/react'
 import axios from 'axios'
-import StudentListItem from "../components/StudentListItem"
+import ListItem from "../components/ListItem"
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
@@ -11,8 +11,9 @@ const Home: NextPage = () => {
   console.log("customers:", customers)
 
   useEffect(() => {
-    axios.get("/api/students").then((response) => {
-        setCustomers(response.data.customers)
+    axios.get<{ customers: any[] }>("/api/students").then((r) => {
+      console.log(r)
+      setCustomers(r.data.customers)
     })
   }, [])
 
@@ -33,7 +34,7 @@ const StudentGrid = (props: { customers: any[] }) => {
     return (
       <SimpleGrid columns={2} spacing={10} width="100%" padding={10}>
         {props.customers.map((customer) => (
-          <StudentListItem key={customer._id} customer={customer} />
+          <ListItem key={customer._id} customer={customer} />
         ))}
       </SimpleGrid>
     )

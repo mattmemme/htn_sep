@@ -9,11 +9,11 @@ import {
 } from "@chakra-ui/react"
 import Link from "next/link"
 
-interface StudentListItems {
+interface ListItemProps {
   customer: any
 }
 
-export default function ListItem(props: StudentListItems) {
+export default function ListItem(props: ListItemProps) {
   const { customer } = props
   console.log("customer:", customer)
 
