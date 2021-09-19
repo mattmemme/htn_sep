@@ -7,7 +7,6 @@ import {
   Spacer,
   Text,
 } from "@chakra-ui/react"
-import { MdStar } from "react-icons/md"
 import Link from "next/link"
 
 interface StudentListItems {

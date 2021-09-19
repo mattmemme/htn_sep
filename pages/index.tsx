@@ -13,6 +13,7 @@ import {
   Spacer,
   Heading} from '@chakra-ui/react'
 import React from 'react'
+import Link from 'next/link'
 import { useUser } from '@auth0/nextjs-auth0'
 
 const Home: NextPage = () => {
@@ -37,10 +38,10 @@ const Home: NextPage = () => {
           <Spacer />
           <Box>
             <Button colorScheme="blue" mr="4">
-              <a href="/api/auth/login">Login</a>
+              <Link href="/api/auth/login">Login</Link>
             </Button>
             <Button colorScheme="blue">
-              <a href="/api/auth/logout">Logout</a>
+              <Link href="/api/auth/logout">Logout</Link>
             </Button>
           </Box>
         </Flex>
@@ -68,12 +69,12 @@ const Home: NextPage = () => {
               <option value="Brock">Brock University</option>
               <option value="McMaster">McMaster University</option>
               <option value="Western">Western University</option>
-              <option value="Queen's">Queen's University</option>
+              <option value="Queen">Queen's University</option>
               <option value="UofC">University of Calgary</option>
             </Select>
 
             <Button colorScheme="blue">
-              <a href="/students">Search</a>
+              <Link href="/students">Search</Link>
             </Button>
 
           </VStack>
