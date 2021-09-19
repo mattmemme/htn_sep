@@ -69,7 +69,7 @@ const Home: NextPage = () => {
               <option value="Brock">Brock University</option>
               <option value="McMaster">McMaster University</option>
               <option value="Western">Western University</option>
-              <option value="Queen">Queen's University</option>
+              <option value="Queen&#39s">Queen&#39s University</option>
               <option value="UofC">University of Calgary</option>
             </Select>
 
