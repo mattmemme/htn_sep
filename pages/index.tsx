@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/Link'
 import styles from '../styles/Home.module.css'
 import { 
   Select, 
@@ -74,7 +73,7 @@ const Home: NextPage = () => {
             </Select>
 
             <Button colorScheme="blue">
-              <Link href="/students">Search</Link>
+              <a href="/students">Search</a>
             </Button>
 
           </VStack>

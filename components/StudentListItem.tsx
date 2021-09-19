@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { MdStar } from "react-icons/md"
-import Link from "next/Link"
+import Link from "next/link"
 
 interface StudentListItems {
   customer: any
